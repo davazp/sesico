@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var path = require('path');
 var sesico = require('./lib');
 
 // TODO: It would be nice if Cheerio could parse a stream directly,
@@ -15,7 +16,7 @@ function readStreamIntoString (stream, callback){
 
 readStreamIntoString(process.stdin, function(err, input){
   var $ = sesico(input);
-  $.use('./sesico');
+  $.use(path.join(process.cwd(), 'sesico'));
   process.stdout.write( $.html() );
   process.stdout.write('\n');
 });
