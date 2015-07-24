@@ -15,7 +15,7 @@ function readStreamIntoString (stream, callback){
 }
 
 readStreamIntoString(process.stdin, function(err, input){
-  var $ = sesico(input);
+  var $ = sesico.render(input);
   $.use(path.join(process.cwd(), 'sesico'));
   process.stdout.write( $.html() );
   process.stdout.write('\n');
